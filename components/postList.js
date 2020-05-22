@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 class PostList extends Component {
@@ -12,12 +11,25 @@ class PostList extends Component {
   }
 
   componentDidMount() {
-    axios.get("https://keroken.com/och/wp/wp-json/wp/v2/posts").then(posts => {
+
+    fetch("https://keroken.com/och/wp/wp-json/wp/v2/posts")
+    .then((response) => {
+      if (response.ok === true) {
+        console.log("Success!");
+      } else {
+        throw new Error();
+      }
+      
+      return response.json();
+    })
+    .then((posts) => {
+      console.log(posts);
       this.setState({
-        posts: posts.data
+        posts: posts
       });
-      console.log(posts.data);
-    });
+    })
+    .catch(error => console.error('Error:', error));
+
   }
 
   createMarkup(html) {
@@ -32,7 +44,7 @@ class PostList extends Component {
             <div className="card" key={post.id}>
               <div className="card-content">
                 <h3>{post.title.rendered}</h3>
-                <div dangerouslySetInnerHTML={this.createMarkup( post.excerpt.rendered )} />
+                {/* <div dangerouslySetInnerHTML={this.createMarkup( post.excerpt.rendered )} /> */}
               </div>
             </div>
           </Link>
