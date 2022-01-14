@@ -8,7 +8,7 @@
     "start": "parcel index.html"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "bulma": "^0.8.2",
     "parcel": "^1.11.0",
     "react": ">=15",
