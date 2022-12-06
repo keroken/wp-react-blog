@@ -10,7 +10,7 @@
   "dependencies": {
     "axios": "^0.21.2",
     "bulma": "^0.8.2",
-    "parcel": "^1.11.0",
+    "parcel": "^1.12.4",
     "react": ">=15",
     "react-dom": "^16.7.0",
     "react-router": "^5.1.2",
